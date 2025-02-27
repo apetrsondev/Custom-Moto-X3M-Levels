@@ -8,6 +8,8 @@
 ### THIS IS VERY EARLY DEVELOPMENT
 it gets very laggy after adding more than 1 object, this will be fixed in a later update
 
+linux is required (if u dont have linux use Windows Subsystem for Linux)
+
 # How to use 
 use the command 
 ```

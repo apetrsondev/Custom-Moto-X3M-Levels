@@ -1,0 +1,5 @@
+cd sites/default/files/public_games/47685/assets/levels/
+python3 makeLevel.py
+cd ../../../../../../..
+echo http://localhost:8000/MotoX3M.html
+python3 -m http.server

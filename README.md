@@ -11,6 +11,8 @@ it gets very laggy after adding more than 1 object, this will be fixed in a late
 # How to use 
 use the command 
 ```
+git clone https://github.com/twinklymeat/Custom-Moto-X3M-Levels.git
+cd Custom-Moto-X3M-Levels
 chmod +x run
 ./run
 ```

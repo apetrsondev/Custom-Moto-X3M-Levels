@@ -43,7 +43,7 @@ def resetBaseLandscape():
                     "y": 0,
                     "height": 3046.8,
                     "shape": true,
-                    "camera": false,
+                    "camera": true,
                     "wireframe": false,
                     "isRoad": true,
                     "line": true,
@@ -100,7 +100,29 @@ def resetBaseDynamicPather():
                 "className": "frg.game.editor.objects::DynamicPather"
             }""")
 
+def resetBaseFinish():
+    return json.loads(
+        """
+        {
+            "params": {
+                "x": 0,
+                "width": 0,
+                "y": 0,
+                "rotation": 0,
+                "height": 0
+            },
+            "className": "FinishZone"
+        }
+        """
+    )
+
+baseFinish = resetBaseFinish()
 baseLandscape = resetBaseLandscape()
+
+objectList   = []
+objectListHW = []
+objectName   = []
+objectHWName = []
 
 def getObjects(layers):
             for i in layers:
@@ -155,11 +177,7 @@ moveV = [0,0]
 
 landscapeTemp = []
 
-vertex = pygame.image.load("vertices.png")
-timer = pygame.time.Clock()
-while True:
-    timer.tick(60)
-    SCREEN.fill((0,0,0))
+def updateLayers():
     layers = data["layers"][0]
 
     decLayer = data["layers"][1]
@@ -188,14 +206,35 @@ while True:
 
     # try:
 
-    OBJ = getObjects(layers)
 
+    OBJ = getObjects(layers)
     objectList = OBJ[0]
     objectListHW = OBJ[1]
     objectName = OBJ[2]
     objectHWName = OBJ[3]
+
+    return OBJ
+
+OBJ = updateLayers()
+
+objectList = OBJ[0]
+objectListHW = OBJ[1]
+objectName = OBJ[2]
+objectHWName = OBJ[3]
+
+vertex = pygame.image.load("vertices.png")
+timer = pygame.time.Clock()
+while True:
+    timer.tick(60)
+    SCREEN.fill((0,0,0))
     for v in landscapeTemp:
         SCREEN.blit(vertex, [(moveV[0]+v[0])*zoomV,(moveV[1]+v[1])*zoomV])
+    if len(landscapeTemp) >= 2:
+        landscapeTempG = []
+        for v in landscapeTemp:
+            landscapeTempG.append(numpy.multiply(numpy.add(v,moveV),zoomV))
+        pygame.draw.lines(SCREEN, (0,255,0), False, landscapeTempG)
+
     for v in objectListHW:
         rec = pygame.rect.Rect(zoomV*(v[0] + moveV[0]), zoomV*(v[1] + moveV[1]), v[3]*zoomV, v[2]*zoomV)
         rec.center = (zoomV*(v[0] + moveV[0]), zoomV*(v[1] + moveV[1]))
@@ -237,6 +276,8 @@ while True:
             SCREEN.blit(vertex, [(v[0] + moveV[0])*zoomV - 1,(v[1] + moveV[1])*zoomV - 1])
             pygame.draw.line(SCREEN,color,[int(zoomV*(vOG[0] + moveV[0])),int((vOG[1]+moveV[1])*zoomV)],[int((v[0] + moveV[0])*zoomV), int((v[1] + moveV[1])*zoomV)])
             vOG = v
+    
+    keys = pygame.key.get_pressed()
 
     for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -261,6 +302,7 @@ while True:
                         print(data)
                         baseLandscape = resetBaseLandscape()
                         landscapeTemp = []
+                        updateLayers()
                     if event.key == pygame.K_p:
                         basePather = resetBaseDynamicPather()
                         for v in landscapeTemp:
@@ -270,12 +312,38 @@ while True:
                         print("enter")
                         print(data)
                         landscapeTemp = []
+                        updateLayers()
+                    if len(landscapeTemp) == 2:
+                        if event.key == pygame.K_f:
+                            tL = landscapeTemp[0]
+                            bR = landscapeTemp[1]
+                            C  = [(bR[0]+tL[0])/2,(bR[1]+tL[1])/2]
+                            
+                            h = tL[1] - bR[1]
+                            w = tL[0] - bR[0]
+                            
+                            params = baseFinish["params"]
+
+                            baseFinish["params"]["x"] = C[0]
+                            baseFinish["params"]["y"] = C[1]
+                            baseFinish["params"]["width"] = w
+                            baseFinish["params"]["height"] = h
+
+                            data["layers"][0].append(baseFinish)
+                            baseFinish = resetBaseFinish()
+
+                            updateLayers()
+                            landscapeTemp = []
+
+
+
+                if keys[pygame.K_LCTRL] and (event.key == pygame.K_z) and len(landscapeTemp) > 0:
+                    landscapeTemp.pop()
                 if event.key == pygame.K_EQUALS:
                     zoomV *= 2
                     print("+")
                 if event.key == pygame.K_MINUS:
                     zoomV /= 2
-    keys = pygame.key.get_pressed()
 
     if keys[pygame.K_RIGHT]:
         moveV[0] -= 20 * (1/zoomV)

@@ -1,6 +1,300 @@
 ﻿{
     "layers": [
-        [],
+        [
+            {
+                "params": {
+                    "direction": 90,
+                    "x": 0,
+                    "width": 15824,
+                    "y": 0,
+                    "height": 3046.8,
+                    "shape": true,
+                    "camera": true,
+                    "wireframe": false,
+                    "isRoad": true,
+                    "line": true,
+                    "textureOffset": 0,
+                    "smoothing": true,
+                    "thick": 128,
+                    "stretchTexture": false,
+                    "repeatTexture": true,
+                    "directed": true,
+                    "vertices": [
+                        {
+                            "x": 217.0,
+                            "y": 447.0
+                        },
+                        {
+                            "x": 638.0,
+                            "y": 432.0
+                        },
+                        {
+                            "x": 886.0,
+                            "y": 431.0
+                        },
+                        {
+                            "x": 1206.0,
+                            "y": 431.0
+                        },
+                        {
+                            "x": 1606.0,
+                            "y": 431.0
+                        },
+                        {
+                            "x": 2066.0,
+                            "y": 431.0
+                        },
+                        {
+                            "x": 5286.0,
+                            "y": 431.0
+                        }
+                    ],
+                    "originOffsetRatio": 0,
+                    "physic": true,
+                    "snapToGrid": false,
+                    "straightSides": true,
+                    "cameraOffsetY": 120,
+                    "textureMode": true,
+                    "lineId": 0,
+                    "rotation": 0
+                },
+                "className": "frg.game.editor.objects::GroundPather"
+            },
+            {
+                "params": {
+                    "x": 0,
+                    "graphic": true,
+                    "textureOffset": 0,
+                    "snapToGrid": true,
+                    "height": 1489.2,
+                    "wireframe": false,
+                    "shapeH": 20,
+                    "vertices": [
+                        {
+                            "x": 656.0,
+                            "y": 452.0
+                        },
+                        {
+                            "x": 1068.0,
+                            "y": 376.0
+                        },
+                        {
+                            "x": 1288.0,
+                            "y": 256.0
+                        },
+                        {
+                            "x": 1476.0,
+                            "y": 96.0
+                        },
+                        {
+                            "x": 1648.0,
+                            "y": -116.0
+                        },
+                        {
+                            "x": 1720.0,
+                            "y": -244.0
+                        },
+                        {
+                            "x": 1732.0,
+                            "y": 388.0
+                        },
+                        {
+                            "x": 2028.0,
+                            "y": 388.0
+                        },
+                        {
+                            "x": 2032.0,
+                            "y": -256.0
+                        },
+                        {
+                            "x": 2144.0,
+                            "y": -124.0
+                        },
+                        {
+                            "x": 2264.0,
+                            "y": -16.0
+                        },
+                        {
+                            "x": 2388.0,
+                            "y": 60.0
+                        },
+                        {
+                            "x": 2564.0,
+                            "y": 124.0
+                        },
+                        {
+                            "x": 2836.0,
+                            "y": 200.0
+                        },
+                        {
+                            "x": 3164.0,
+                            "y": 260.0
+                        },
+                        {
+                            "x": 3724.0,
+                            "y": 328.0
+                        },
+                        {
+                            "x": 4132.0,
+                            "y": 368.0
+                        },
+                        {
+                            "x": 4352.0,
+                            "y": 376.0
+                        },
+                        {
+                            "x": 4668.0,
+                            "y": 328.0
+                        },
+                        {
+                            "x": 4944.0,
+                            "y": 244.0
+                        },
+                        {
+                            "x": 5056.0,
+                            "y": 168.0
+                        },
+                        {
+                            "x": 5136.0,
+                            "y": 92.0
+                        },
+                        {
+                            "x": 5224.0,
+                            "y": 160.0
+                        },
+                        {
+                            "x": 5360.0,
+                            "y": 292.0
+                        },
+                        {
+                            "x": 5540.0,
+                            "y": 372.0
+                        },
+                        {
+                            "x": 5944.0,
+                            "y": 412.0
+                        }
+                    ],
+                    "originOffsetRatio": 0,
+                    "physic": true,
+                    "stretchTexture": false,
+                    "straightSides": true,
+                    "smoothing": true,
+                    "textureMode": true,
+                    "type": 2,
+                    "width": 207.9,
+                    "isStatic": true,
+                    "density": "1",
+                    "action": 0,
+                    "safeId": -1,
+                    "id": -1,
+                    "rotation": 0,
+                    "repeatTexture": true,
+                    "y": 0
+                },
+                "className": "frg.game.editor.objects::DynamicPather"
+            },
+            {
+                "params": {
+                    "x": 0,
+                    "graphic": true,
+                    "textureOffset": 0,
+                    "snapToGrid": true,
+                    "height": 1489.2,
+                    "wireframe": false,
+                    "shapeH": 20,
+                    "vertices": [
+                        {
+                            "x": 5424.0,
+                            "y": -108.0
+                        },
+                        {
+                            "x": 5616.0,
+                            "y": -292.0
+                        },
+                        {
+                            "x": 5760.0,
+                            "y": -508.0
+                        },
+                        {
+                            "x": 5828.0,
+                            "y": -712.0
+                        },
+                        {
+                            "x": 5828.0,
+                            "y": -1016.0
+                        },
+                        {
+                            "x": 5736.0,
+                            "y": -1304.0
+                        },
+                        {
+                            "x": 5484.0,
+                            "y": -1444.0
+                        },
+                        {
+                            "x": 5196.0,
+                            "y": -1520.0
+                        },
+                        {
+                            "x": 4808.0,
+                            "y": -1520.0
+                        },
+                        {
+                            "x": 4544.0,
+                            "y": -1428.0
+                        },
+                        {
+                            "x": 4336.0,
+                            "y": -1240.0
+                        },
+                        {
+                            "x": 4280.0,
+                            "y": -952.0
+                        },
+                        {
+                            "x": 4372.0,
+                            "y": -608.0
+                        },
+                        {
+                            "x": 4556.0,
+                            "y": -364.0
+                        },
+                        {
+                            "x": 4836.0,
+                            "y": -148.0
+                        }
+                    ],
+                    "originOffsetRatio": 0,
+                    "physic": true,
+                    "stretchTexture": false,
+                    "straightSides": true,
+                    "smoothing": true,
+                    "textureMode": true,
+                    "type": 2,
+                    "width": 207.9,
+                    "isStatic": true,
+                    "density": "1",
+                    "action": 0,
+                    "safeId": -1,
+                    "id": -1,
+                    "rotation": 0,
+                    "repeatTexture": true,
+                    "y": 0
+                },
+                "className": "frg.game.editor.objects::DynamicPather"
+            },
+            {
+                "params": {
+                    "x": 6306.0,
+                    "width": -604.0,
+                    "y": 488.0,
+                    "rotation": 0,
+                    "height": -1024.0
+                },
+                "className": "FinishZone"
+            }
+        ],
         [],
         [],
         null,

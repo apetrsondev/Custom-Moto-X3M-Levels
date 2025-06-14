@@ -4,7 +4,8 @@ import pygame
 import numpy
 import codecs
 from math import *
-
+from baseObjects import *
+import makeObject as mo
 
 pygame.init()
 name = "level maker (beta)"
@@ -34,87 +35,6 @@ objectList = []
 objectName = []
 objectListHW = []
 objectHWName = []
-def resetBaseLandscape():
-    return json.loads("""{
-                "params": {
-                    "direction": 90,
-                    "x": 0,
-                    "width": 15824,
-                    "y": 0,
-                    "height": 3046.8,
-                    "shape": true,
-                    "camera": true,
-                    "wireframe": false,
-                    "isRoad": true,
-                    "line": true,
-                    "textureOffset": 0,
-                    "smoothing": true,
-                    "thick": 128,
-                    "stretchTexture": false,
-                    "repeatTexture": true,
-                    "directed": true,
-                    "vertices": [
-                        
-                    ],
-                    "originOffsetRatio": 0,
-                    "physic": true,
-                    "snapToGrid": false,
-                    "straightSides": true,
-                    "cameraOffsetY": 120,
-                    "textureMode": true,
-                    "lineId": 0,
-                    "rotation": 0
-                },
-                "className": "frg.game.editor.objects::GroundPather"
-            }""")
-
-def resetBaseDynamicPather():
-    return json.loads("""{
-                "params": {
-                    "x": 0,
-                    "graphic": true,
-                    "textureOffset": 0,
-                    "snapToGrid": true,
-                    "height": 1489.2,
-                    "wireframe": false,
-                    "shapeH": 20,
-                    "vertices": [
-                    ],
-                    "originOffsetRatio": 0,
-                    "physic": true,
-                    "stretchTexture": false,
-                    "straightSides": true,
-                    "smoothing": true,
-                    "textureMode": true,
-                    "type": 2,
-                    "width": 207.9,
-                    "isStatic": true,
-                    "density": "1",
-                    "action": 0,
-                    "safeId": -1,
-                    "id": -1,
-                    "rotation": 0,
-                    "repeatTexture": true,
-                    "y": 0
-                },
-                "className": "frg.game.editor.objects::DynamicPather"
-            }""")
-
-def resetBaseFinish():
-    return json.loads(
-        """
-        {
-            "params": {
-                "x": 0,
-                "width": 0,
-                "y": 0,
-                "rotation": 0,
-                "height": 0
-            },
-            "className": "FinishZone"
-        }
-        """
-    )
 
 baseFinish = resetBaseFinish()
 baseLandscape = resetBaseLandscape()
@@ -295,45 +215,23 @@ while True:
             if event.type == pygame.KEYDOWN:
                 if len(landscapeTemp) >= 2:
                     if event.key == pygame.K_RETURN:
-                        for v in landscapeTemp:
-                            baseLandscape["params"]["vertices"].append({"x":v[0],"y":v[1]})
-                        data["layers"][0].append(baseLandscape)
-                        print("enter")
-                        print(data)
-                        baseLandscape = resetBaseLandscape()
+                        data = mo.makeLandscape(landscapeTemp, data)
                         landscapeTemp = []
                         updateLayers()
-                    if event.key == pygame.K_p:
-                        basePather = resetBaseDynamicPather()
-                        for v in landscapeTemp:
-                            basePather["params"]["vertices"].append({"x":v[0],"y":v[1]})
-                            print(basePather)
-                        data["layers"][0].append(basePather)
-                        print("enter")
-                        print(data)
+                    elif event.key == pygame.K_p:
+                        data = mo.makePipe(landscapeTemp, data)
                         landscapeTemp = []
                         updateLayers()
-                    if len(landscapeTemp) == 2:
-                        if event.key == pygame.K_f:
-                            tL = landscapeTemp[0]
-                            bR = landscapeTemp[1]
-                            C  = [(bR[0]+tL[0])/2,(bR[1]+tL[1])/2]
-                            
-                            h = tL[1] - bR[1]
-                            w = tL[0] - bR[0]
-                            
-                            params = baseFinish["params"]
-
-                            baseFinish["params"]["x"] = C[0]
-                            baseFinish["params"]["y"] = C[1]
-                            baseFinish["params"]["width"] = w
-                            baseFinish["params"]["height"] = h
-
-                            data["layers"][0].append(baseFinish)
-                            baseFinish = resetBaseFinish()
-
+                    elif event.key == pygame.K_d:
+                        data = mo.makeRigidBody(landscapeTemp, data)
+                        updateLayers()
+                        landscapeTemp = []
+                    elif len(landscapeTemp) == 2:
+                        if event.key == pygame.K_f: # * making finish
+                            data = mo.makeFinish(landscapeTemp, data)
                             updateLayers()
                             landscapeTemp = []
+
 
 
 

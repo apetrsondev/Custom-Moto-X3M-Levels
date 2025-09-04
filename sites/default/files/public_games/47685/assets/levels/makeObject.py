@@ -120,7 +120,25 @@ def makeMover(vertices, data):
         v = numpy.subtract(v, origin)
         baseMover["params"]["vertices"].append({"x":v[0],"y":v[1]})
         print(baseMover)
+    ID = easygui.integerbox("Enter ID", "ID PROMPT")
+    speed = easygui.integerbox("Enter speed (launcher on 21 is 840)", "Speed PROMPT", 800, upperbound=2000)
+    waitTime = easygui.integerbox("Enter Wait Time (secs)", "Wait PROMPT", 0)
+    baseMover['params']['id'] = ID
+    baseMover['params']['speed'] = speed
+    baseMover['params']['startTime'] = waitTime
     data["layers"][5].append(baseMover)
+
     # print("enter")
     # print(data)
+    return data
+
+def makeMotor(vertex, data):
+    baseMotor = resetMotor()
+    baseMotor['params']['x'] = vertex[0]
+    baseMotor['params']['y'] = vertex[1]
+    ID = easygui.integerbox("Enter ID", "ID PROMPT", -1)
+    speed = easygui.integerbox("Enter speed (wheels on 3 are 40) (negative number for counter-clockwise) ", "speed prompt", 100, upperbound=2000)
+    baseMotor['params']['id'] = ID
+    baseMotor['params']['rate'] = speed
+    data['layers'][5].append(baseMotor)
     return data

@@ -236,6 +236,10 @@ while True:
                         data = mo.makePivotJoint(landscapeTemp[0], data)
                         landscapeTemp = []
                         updateLayers()
+                    elif event.key == pygame.K_m:
+                        data = mo.makeMotor(landscapeTemp[0], data)
+                        landscapeTemp = []
+                        updateLayers()
                 if len(landscapeTemp) >= 2:
                     if event.key == pygame.K_RETURN:
                         data = mo.makeLandscape(landscapeTemp, data)
@@ -249,6 +253,10 @@ while True:
                         data = mo.makeRigidBody(landscapeTemp, data)
                         updateLayers()
                         landscapeTemp = []
+                    elif event.key == pygame.K_m:
+                        data = mo.makeMover(landscapeTemp, data)
+                        updateLayers()
+                        landscapeTemp = []
                     elif len(landscapeTemp) == 2:
                         if event.key == pygame.K_f: # * making finish
                             data = mo.makeFinish(landscapeTemp, data)
@@ -258,12 +266,6 @@ while True:
                             data = mo.makeTrigger(landscapeTemp, data)
                             updateLayers()
                             landscapeTemp = []
-                        elif event.key == pygame.K_m:
-                            data = mo.makeMover(landscapeTemp, data)
-                    elif event.key == pygame.K_m:
-                        data = mo.makeMover(landscapeTemp, data)
-                        updateLayers()
-                        landscapeTemp = []
 
 
 

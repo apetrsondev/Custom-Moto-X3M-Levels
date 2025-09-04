@@ -173,3 +173,23 @@ def resetMover():
                     "thickness": 10
                 }
             }""")
+
+def resetMotor():
+    return json.loads("""{
+                "params": {
+                    "x": 2570,
+                    "graphic": 1,
+                    "y": 300,
+                    "height": 17,
+                    "swoosh": false,
+                    "width": 17,
+                    "rate": 40,
+                    "time": 800,
+                    "snd": false,
+                    "safeId": -1,
+                    "rotation": 0,
+                    "id": -1
+                },
+                "className": "MotorJointE"
+            }
+    """)

@@ -147,15 +147,15 @@ timer = pygame.time.Clock()
 while True:
     timer.tick(60)
     SCREEN.fill((0,0,0))
-    for v in landscapeTemp:
+    for v in landscapeTemp: # place vertices for selected object
         SCREEN.blit(vertex, [(moveV[0]+v[0])*zoomV,(moveV[1]+v[1])*zoomV])
-    if len(landscapeTemp) >= 2:
+    if len(landscapeTemp) >= 2: # place lines for current object
         landscapeTempG = []
         for v in landscapeTemp:
             landscapeTempG.append(numpy.multiply(numpy.add(v,moveV),zoomV))
         pygame.draw.lines(SCREEN, (0,255,0), False, landscapeTempG)
 
-    for v in objectListHW:
+    for v in objectListHW: # render all rectangles
         rec = pygame.rect.Rect(zoomV*(v[0] + moveV[0]), zoomV*(v[1] + moveV[1]), v[3]*zoomV, v[2]*zoomV)
         rec.center = (zoomV*(v[0] + moveV[0]), zoomV*(v[1] + moveV[1]))
         
@@ -255,7 +255,7 @@ while True:
     
     pygame.display.flip()
 
-
 # print(data)
+# import http
 
-
+# http.server

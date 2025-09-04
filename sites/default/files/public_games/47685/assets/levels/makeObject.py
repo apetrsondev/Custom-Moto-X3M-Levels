@@ -1,9 +1,15 @@
 import pygame
 from baseObjects import *
+import numpy
 
 def makeLandscape(vertices, data):
     baseLandscape = resetBaseLandscape()
+    origin = vertices[0]
+    print(vertices)
+    baseLandscape["params"]["x"] = origin[0]
+    baseLandscape["params"]["y"] = origin[1]
     for v in vertices:
+        v = numpy.subtract(v,origin)
         baseLandscape["params"]["vertices"].append({"x":v[0],"y":v[1]})
     data["layers"][0].append(baseLandscape)
     print("enter")
@@ -13,7 +19,11 @@ def makeLandscape(vertices, data):
 
 def makePipe(vertices, data):
     basePather = resetBaseDynamicPather()
+    origin = vertices[0]
+    basePather['params']['x'] = origin[0]
+    basePather['params']['y'] = origin[1]
     for v in vertices:
+        v = numpy.subtract(v, origin)
         basePather["params"]["vertices"].append({"x":v[0],"y":v[1]})
         print(basePather)
     data["layers"][0].append(basePather)
@@ -43,7 +53,17 @@ def makeFinish(vertices, data):
 
 def makeRigidBody(vertices, data):
     baseBody = resetLandscapeShaper()
+    sumX = 0
+    sumY = 0
+    for i in vertices:
+        sumX += i[0]
+        sumY += i[1]
+    origin = (sumX/len(vertices),sumY/len(vertices))
+    print("origin: ", origin)
+    baseBody['params']['x'] = origin[0]
+    baseBody['params']['y'] = origin[1]
     for v in vertices:
+        v = numpy.subtract(v, origin)
         baseBody["params"]["vertices"].append({"x":v[0],"y":v[1]})
         print(baseBody)
     data["layers"][0].append(baseBody)

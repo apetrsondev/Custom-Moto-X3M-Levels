@@ -12,6 +12,7 @@ name = "level maker (beta)"
 pygame.display.set_caption(name)
 # os.system("touch customLevel.json")
 baseFile = codecs.open("base.json", encoding= "utf-8-sig")
+# baseFile = codecs.open("map2.json", encoding= "utf-8-sig")
 # newFile = codecs.open("customLevel.json", encoding= "utf-8-sig", mode = "w")
 baseJson = baseFile.read()
 # newFile.write(baseJson)
@@ -36,13 +37,15 @@ objectName = []
 objectListHW = []
 objectHWName = []
 
-baseFinish = resetBaseFinish()
-baseLandscape = resetBaseLandscape()
+# baseFinish = resetBaseFinish()
+# baseLandscape = resetBaseLandscape()
 
 objectList   = []
 objectListHW = []
 objectName   = []
 objectHWName = []
+objectIDHW   = []
+objectID     = []
 
 def getObjects(layers):
             for i in layers:
@@ -77,10 +80,18 @@ def getObjects(layers):
                     objectList.append(globalPos)
                     objectName.append(i["className"])
                     objectList.append
+                    try:
+                        objectID.append(i["params"]['id'])
+                    except:
+                        objectID.append(-2)
                 except:
                     # print("H/W",i["params"]["height"], i["params"]["width"])
                     objectListHW.append((x,y,i["params"]["height"], i["params"]["width"],i["params"]["rotation"]))
                     objectHWName.append(i["className"])
+                    try:
+                        objectIDHW.append(i['params']['id'])
+                    except:
+                        objectIDHW.append(-2)
                 # print(globalPos)
                 # print("\n")
             return objectList, objectListHW, objectName, objectHWName
@@ -128,10 +139,10 @@ def updateLayers():
 
 
     OBJ = getObjects(layers)
-    objectList = OBJ[0]
-    objectListHW = OBJ[1]
-    objectName = OBJ[2]
-    objectHWName = OBJ[3]
+    # objectList = OBJ[0]
+    # objectListHW = OBJ[1]
+    # objectName = OBJ[2]
+    # objectHWName = OBJ[3]
 
     return OBJ
 
@@ -141,6 +152,8 @@ objectList = OBJ[0]
 objectListHW = OBJ[1]
 objectName = OBJ[2]
 objectHWName = OBJ[3]
+
+font = pygame.font.Font(None, 20)
 
 vertex = pygame.image.load("vertices.png")
 timer = pygame.time.Clock()
@@ -179,7 +192,9 @@ while True:
         bottomR = (-1*topL[0], -1*topL[1])
 
         pygame.draw.lines(SCREEN,color,False, ((rec.center[0]+topR[0],rec.center[1]+topR[1]), (rec.center[0]+topL[0],rec.center[1]+topL[1]), (rec.center[0]+bottomL[0], rec.center[1]+bottomL[1]), (rec.center[0]+bottomR[0],rec.center[1]+bottomR[1]), (rec.center[0]+topR[0],rec.center[1]+topR[1]), (rec.center[0]+bottomL[0], rec.center[1]+bottomL[1])))
-
+        ID = font.render(f'{objectIDHW[objectListHW.index(v)]}',True, (0,255,0))
+        print(rec.center)
+        SCREEN.blit(ID, (rec.center[0]+bottomL[0],rec.center[1]+bottomL[1]))
 
     for item in objectList:
         try:
@@ -196,15 +211,18 @@ while True:
             SCREEN.blit(vertex, [(v[0] + moveV[0])*zoomV - 1,(v[1] + moveV[1])*zoomV - 1])
             pygame.draw.line(SCREEN,color,[int(zoomV*(vOG[0] + moveV[0])),int((vOG[1]+moveV[1])*zoomV)],[int((v[0] + moveV[0])*zoomV), int((v[1] + moveV[1])*zoomV)])
             vOG = v
-    
+        ID = font.render(f"{objectID[objectList.index(item)]}", True, (0,255,0))
+        SCREEN.blit(ID, [(item[0][0]+moveV[0])*zoomV - 1, (item[0][1]+moveV[1])*zoomV + 15])
+        # print("FONT POS", [(item[0][0]+moveV[0])*zoomV - 1, (item[0][1]+moveV[1])*zoomV + 15])
     keys = pygame.key.get_pressed()
 
     for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 json_object = json.dumps(data, indent = 4)
-                os.system("rm map1.json")
-                os.system("touch map1.json")
+                # os.system("rm -f map1.json")
+                # os.system("touch map1.json")
                 newFile = codecs.open("map1.json", encoding= "utf-8-sig", mode = "w")
+                # newFile.write("")
                 newFile.write(json_object)
                 newFile.close()
                 pygame.quit()
@@ -213,6 +231,11 @@ while True:
                 landscapeTemp.append([(pygame.mouse.get_pos()[0]/zoomV-moveV[0]),(pygame.mouse.get_pos()[1]/zoomV-moveV[1])])  # * i dont kmow why its - instead of + but it works T-T
                 print(pygame.mouse.get_pos())
             if event.type == pygame.KEYDOWN:
+                if len(landscapeTemp) == 1:
+                    if event.key == pygame.K_t:
+                        data = mo.makePivotJoint(landscapeTemp[0], data)
+                        landscapeTemp = []
+                        updateLayers()
                 if len(landscapeTemp) >= 2:
                     if event.key == pygame.K_RETURN:
                         data = mo.makeLandscape(landscapeTemp, data)
@@ -231,7 +254,16 @@ while True:
                             data = mo.makeFinish(landscapeTemp, data)
                             updateLayers()
                             landscapeTemp = []
-
+                        elif event.key == pygame.K_t:
+                            data = mo.makeTrigger(landscapeTemp, data)
+                            updateLayers()
+                            landscapeTemp = []
+                        elif event.key == pygame.K_m:
+                            data = mo.makeMover(landscapeTemp, data)
+                    elif event.key == pygame.K_m:
+                        data = mo.makeMover(landscapeTemp, data)
+                        updateLayers()
+                        landscapeTemp = []
 
 
 

@@ -3,10 +3,44 @@
         [
             {
                 "params": {
+                    "safeId": -1,
+                    "x": 231.66666666666666,
+                    "graphic": true,
+                    "ignore": false,
+                    "y": 573.3333333333334,
+                    "plr": false,
+                    "vertices": [
+                        {
+                            "x": 24.333333333333343,
+                            "y": -51.33333333333337
+                        },
+                        {
+                            "x": 35.33333333333334,
+                            "y": 26.66666666666663
+                        },
+                        {
+                            "x": -59.66666666666666,
+                            "y": 24.66666666666663
+                        }
+                    ],
+                    "physic": true,
+                    "layer": 4,
+                    "rem": true,
+                    "isStatic": false,
+                    "density": 1,
+                    "line": false,
+                    "rotation": 0,
+                    "id": -1,
+                    "isWheel": false
+                },
+                "className": "frg.game.editor.objects::LandscapeShaper"
+            },
+            {
+                "params": {
                     "direction": 90,
-                    "x": 0,
+                    "x": -788.0,
                     "width": 15824,
-                    "y": 0,
+                    "y": 676.0,
                     "height": 3046.8,
                     "shape": true,
                     "camera": true,
@@ -21,32 +55,12 @@
                     "directed": true,
                     "vertices": [
                         {
-                            "x": 217.0,
-                            "y": 447.0
+                            "x": 0.0,
+                            "y": 0.0
                         },
                         {
-                            "x": 638.0,
-                            "y": 432.0
-                        },
-                        {
-                            "x": 886.0,
-                            "y": 431.0
-                        },
-                        {
-                            "x": 1206.0,
-                            "y": 431.0
-                        },
-                        {
-                            "x": 1606.0,
-                            "y": 431.0
-                        },
-                        {
-                            "x": 2066.0,
-                            "y": 431.0
-                        },
-                        {
-                            "x": 5286.0,
-                            "y": 431.0
+                            "x": 2320.0,
+                            "y": 0.0
                         }
                     ],
                     "originOffsetRatio": 0,
@@ -62,237 +76,61 @@
             },
             {
                 "params": {
-                    "x": 0,
+                    "safeId": -1,
+                    "x": 657.2222222222222,
                     "graphic": true,
-                    "textureOffset": 0,
-                    "snapToGrid": true,
-                    "height": 1489.2,
-                    "wireframe": false,
-                    "shapeH": 20,
+                    "ignore": false,
+                    "y": 452.3333333333333,
+                    "plr": false,
                     "vertices": [
                         {
-                            "x": 656.0,
-                            "y": 452.0
+                            "x": -26.22222222222217,
+                            "y": 64.66666666666669
                         },
                         {
-                            "x": 1068.0,
-                            "y": 376.0
+                            "x": 26.77777777777783,
+                            "y": 69.66666666666669
                         },
                         {
-                            "x": 1288.0,
-                            "y": 256.0
+                            "x": 70.77777777777783,
+                            "y": 33.666666666666686
                         },
                         {
-                            "x": 1476.0,
-                            "y": 96.0
+                            "x": 74.77777777777783,
+                            "y": -19.333333333333314
                         },
                         {
-                            "x": 1648.0,
-                            "y": -116.0
+                            "x": 41.77777777777783,
+                            "y": -64.33333333333331
                         },
                         {
-                            "x": 1720.0,
-                            "y": -244.0
+                            "x": -5.222222222222172,
+                            "y": -68.33333333333331
                         },
                         {
-                            "x": 1732.0,
-                            "y": 388.0
+                            "x": -55.22222222222217,
+                            "y": -49.333333333333314
                         },
                         {
-                            "x": 2028.0,
-                            "y": 388.0
+                            "x": -68.22222222222217,
+                            "y": -5.333333333333314
                         },
                         {
-                            "x": 2032.0,
-                            "y": -256.0
-                        },
-                        {
-                            "x": 2144.0,
-                            "y": -124.0
-                        },
-                        {
-                            "x": 2264.0,
-                            "y": -16.0
-                        },
-                        {
-                            "x": 2388.0,
-                            "y": 60.0
-                        },
-                        {
-                            "x": 2564.0,
-                            "y": 124.0
-                        },
-                        {
-                            "x": 2836.0,
-                            "y": 200.0
-                        },
-                        {
-                            "x": 3164.0,
-                            "y": 260.0
-                        },
-                        {
-                            "x": 3724.0,
-                            "y": 328.0
-                        },
-                        {
-                            "x": 4132.0,
-                            "y": 368.0
-                        },
-                        {
-                            "x": 4352.0,
-                            "y": 376.0
-                        },
-                        {
-                            "x": 4668.0,
-                            "y": 328.0
-                        },
-                        {
-                            "x": 4944.0,
-                            "y": 244.0
-                        },
-                        {
-                            "x": 5056.0,
-                            "y": 168.0
-                        },
-                        {
-                            "x": 5136.0,
-                            "y": 92.0
-                        },
-                        {
-                            "x": 5224.0,
-                            "y": 160.0
-                        },
-                        {
-                            "x": 5360.0,
-                            "y": 292.0
-                        },
-                        {
-                            "x": 5540.0,
-                            "y": 372.0
-                        },
-                        {
-                            "x": 5944.0,
-                            "y": 412.0
+                            "x": -59.22222222222217,
+                            "y": 38.666666666666686
                         }
                     ],
-                    "originOffsetRatio": 0,
                     "physic": true,
-                    "stretchTexture": false,
-                    "straightSides": true,
-                    "smoothing": true,
-                    "textureMode": true,
-                    "type": 2,
-                    "width": 207.9,
-                    "isStatic": true,
-                    "density": "1",
-                    "action": 0,
-                    "safeId": -1,
+                    "layer": 4,
+                    "rem": true,
+                    "isStatic": false,
+                    "density": 1,
+                    "line": false,
+                    "rotation": 0,
                     "id": -1,
-                    "rotation": 0,
-                    "repeatTexture": true,
-                    "y": 0
+                    "isWheel": false
                 },
-                "className": "frg.game.editor.objects::DynamicPather"
-            },
-            {
-                "params": {
-                    "x": 0,
-                    "graphic": true,
-                    "textureOffset": 0,
-                    "snapToGrid": true,
-                    "height": 1489.2,
-                    "wireframe": false,
-                    "shapeH": 20,
-                    "vertices": [
-                        {
-                            "x": 5424.0,
-                            "y": -108.0
-                        },
-                        {
-                            "x": 5616.0,
-                            "y": -292.0
-                        },
-                        {
-                            "x": 5760.0,
-                            "y": -508.0
-                        },
-                        {
-                            "x": 5828.0,
-                            "y": -712.0
-                        },
-                        {
-                            "x": 5828.0,
-                            "y": -1016.0
-                        },
-                        {
-                            "x": 5736.0,
-                            "y": -1304.0
-                        },
-                        {
-                            "x": 5484.0,
-                            "y": -1444.0
-                        },
-                        {
-                            "x": 5196.0,
-                            "y": -1520.0
-                        },
-                        {
-                            "x": 4808.0,
-                            "y": -1520.0
-                        },
-                        {
-                            "x": 4544.0,
-                            "y": -1428.0
-                        },
-                        {
-                            "x": 4336.0,
-                            "y": -1240.0
-                        },
-                        {
-                            "x": 4280.0,
-                            "y": -952.0
-                        },
-                        {
-                            "x": 4372.0,
-                            "y": -608.0
-                        },
-                        {
-                            "x": 4556.0,
-                            "y": -364.0
-                        },
-                        {
-                            "x": 4836.0,
-                            "y": -148.0
-                        }
-                    ],
-                    "originOffsetRatio": 0,
-                    "physic": true,
-                    "stretchTexture": false,
-                    "straightSides": true,
-                    "smoothing": true,
-                    "textureMode": true,
-                    "type": 2,
-                    "width": 207.9,
-                    "isStatic": true,
-                    "density": "1",
-                    "action": 0,
-                    "safeId": -1,
-                    "id": -1,
-                    "rotation": 0,
-                    "repeatTexture": true,
-                    "y": 0
-                },
-                "className": "frg.game.editor.objects::DynamicPather"
-            },
-            {
-                "params": {
-                    "x": 6306.0,
-                    "width": -604.0,
-                    "y": 488.0,
-                    "rotation": 0,
-                    "height": -1024.0
-                },
-                "className": "FinishZone"
+                "className": "frg.game.editor.objects::LandscapeShaper"
             }
         ],
         [],

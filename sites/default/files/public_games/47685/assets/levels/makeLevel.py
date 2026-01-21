@@ -11,7 +11,7 @@ pygame.init()
 name = "level maker (beta)"
 pygame.display.set_caption(name)
 # os.system("touch customLevel.json")
-baseFile = codecs.open("base.json", encoding= "utf-8-sig")
+baseFile = open("base.json", encoding= "utf-8-sig")
 # baseFile = codecs.open("map2.json", encoding= "utf-8-sig")
 # newFile = codecs.open("customLevel.json", encoding= "utf-8-sig", mode = "w")
 baseJson = baseFile.read()

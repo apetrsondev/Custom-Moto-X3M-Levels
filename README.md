@@ -6,32 +6,20 @@
 
 
 ### THIS IS VERY EARLY DEVELOPMENT
-it gets very laggy after adding more than 1 object, this will be fixed in a later update
-
-linux is required (if u dont have linux use Windows Subsystem for Linux)
+linux is the only platform I tested on so if youre on windows then idk
 
 # How to use 
 use the command 
 ```
 git clone https://github.com/twinklymeat/Custom-Moto-X3M-Levels.git
 cd Custom-Moto-X3M-Levels
-chmod +x run
-./run
+python -m http.server
 ```
 
-this will open a window where you can select vertices
+this will host moto on localhost
 
-once you select the shape press enter to fill it with ground, or P to fill it with metal pipes
+Next go to http://localhost:8000 
 
-pressing the X to close the window automatically saves the map.
+Use the file selector on the top left and load whatever map you make
 
-the program will then make a local https server, it can be accessed at http://localhost:8000/MotoX3M.html
-
-the custom level will be in map 1
-
-enjoy!
-
-## Required python modules
-pygame
-
-numpy
+make sure you select the file before loading the map, selecting any map will load the custom map file 

@@ -346,8 +346,11 @@
         	  fnSendMsg(event);
         });
         </script>
-  
-  <input type="file" id="fileInput" style="position: absolute; top:0px;">
+  <!-- <label for="fileInput" class="custom-file-upload" style="cursor: pointer; padding: 10px; background-color: #ffa943; height: fit-content;">
+        Custom Upload
+    </label> -->
+<input id="fileInput" type="file" style="" />
+  <!-- <input type="file" id="fileInput" style="position: absolute; top:0px; height: 20px; background: #ff861b; border:1px solid black" > -->
   <script type="text/javascript"> 
     document.getElementById("fileInput").addEventListener("change", function(e) {
                 const file = e.target.files[0];

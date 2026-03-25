@@ -193,3 +193,22 @@ def resetMotor():
                 "className": "MotorJointE"
             }
     """)
+
+def resetTnt():
+    return json.loads("""{    
+                "params": {
+                    "x": 0,
+                    "width": 53.2,
+                    "y": 0,
+                    "height": 53.2,
+                    "physic": false,
+                    "count": 40,
+                    "stones": false,
+                    "impulse": 17000,
+                    "radius": 64,
+                    "safeId": 3,
+                    "rotation": 0,
+                    "id": 1
+                },
+                "className": "Tnt1"
+            }""")

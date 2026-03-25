@@ -40,12 +40,13 @@ objectHWName = []
 # baseFinish = resetBaseFinish()
 # baseLandscape = resetBaseLandscape()
 
-objectList   = []
-objectListHW = []
-objectName   = []
-objectHWName = []
-objectIDHW   = []
-objectID     = []
+objectList     = []
+objectListHW   = []
+objectName     = []
+objectHWName   = []
+objectIDHW     = []
+objectID       = []
+objectHWRadius = []
 
 def getObjects(layers):
             for i in layers:
@@ -79,7 +80,7 @@ def getObjects(layers):
                         globalPos.append([localx + x, localy + y, i["params"]["rotation"]])
                     objectList.append(globalPos)
                     objectName.append(i["className"])
-                    objectList.append
+                    # objectList.append
                     try:
                         objectID.append(i["params"]['id'])
                     except:
@@ -92,9 +93,13 @@ def getObjects(layers):
                         objectIDHW.append(i['params']['id'])
                     except:
                         objectIDHW.append(-2)
+                    try:
+                        objectHWRadius.append(i['params']['radius'])
+                    except:
+                        objectHWRadius.append(-1)
                 # print(globalPos)
                 # print("\n")
-            return objectList, objectListHW, objectName, objectHWName
+            return objectList, objectListHW, objectName, objectHWName, objectHWRadius
 
 # * data["layers"][0] is the landscape 
 # * data["layers"][1] contain decorations
@@ -152,6 +157,7 @@ objectList = OBJ[0]
 objectListHW = OBJ[1]
 objectName = OBJ[2]
 objectHWName = OBJ[3]
+objectHWRadius = OBJ[4]
 
 font = pygame.font.Font(None, 20)
 
@@ -190,6 +196,9 @@ while True:
         topR = (int(-((w/2)*cos(r)+(h/2)*sin(r))*zoomV),int(-((w/2)*sin(r)-(h/2)*cos(r))*zoomV))
         bottomL = (-1*topR[0], -1*topR[1])
         bottomR = (-1*topL[0], -1*topL[1])
+        
+        if objectHWName[objectListHW.index(v)] == "Tnt1":
+            pygame.draw.circle(SCREEN, color, rec.center, objectHWRadius[objectListHW.index(v)]*zoomV, 1)
 
         pygame.draw.lines(SCREEN,color,False, ((rec.center[0]+topR[0],rec.center[1]+topR[1]), (rec.center[0]+topL[0],rec.center[1]+topL[1]), (rec.center[0]+bottomL[0], rec.center[1]+bottomL[1]), (rec.center[0]+bottomR[0],rec.center[1]+bottomR[1]), (rec.center[0]+topR[0],rec.center[1]+topR[1]), (rec.center[0]+bottomL[0], rec.center[1]+bottomL[1])))
         ID = font.render(f'{objectIDHW[objectListHW.index(v)]}',True, (0,255,0))
@@ -232,12 +241,16 @@ while True:
                 print(pygame.mouse.get_pos())
             if event.type == pygame.KEYDOWN:
                 if len(landscapeTemp) == 1:
-                    if event.key == pygame.K_t:
+                    if event.key == pygame.K_n:
                         data = mo.makePivotJoint(landscapeTemp[0], data)
                         landscapeTemp = []
                         updateLayers()
                     elif event.key == pygame.K_m:
                         data = mo.makeMotor(landscapeTemp[0], data)
+                        landscapeTemp = []
+                        updateLayers()
+                    elif event.key == pygame.K_t:
+                        data = mo.makeTnt(landscapeTemp[0],data)
                         landscapeTemp = []
                         updateLayers()
                 if len(landscapeTemp) >= 2:

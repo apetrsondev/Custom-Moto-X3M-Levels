@@ -344,5 +344,25 @@
         document.addEventListener('keyup', function (e) {
         	  fnSendMsg(event);
         });
-        </script></body>
+        </script>
+  
+  <input type="file" id="fileInput" style="position: absolute; top:0px;">
+  <script type="text/javascript"> 
+    document.getElementById("fileInput").addEventListener("change", function(e) {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                reader.onload = function() {
+                    const data = JSON.parse(reader.result);
+                    console.log(data);
+                    document.getElementById("output").textContent = reader.result;
+                    return data;
+                }
+                
+                reader.readAsText(file);
+        
+        
+                });
+  </script>
+  <div id="output"></div>
+</body>
 </html>

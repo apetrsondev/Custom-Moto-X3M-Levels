@@ -142,3 +142,18 @@ def makeMotor(vertex, data):
     baseMotor['params']['rate'] = speed
     data['layers'][5].append(baseMotor)
     return data
+
+def makeTnt(vertex, data):
+    baseTnt = resetTnt()
+    baseTnt["params"]['x'] = vertex[0]
+    baseTnt["params"]['y'] = vertex[1]
+    ID = easygui.integerbox("Enter ID", "ID PROMPT")
+    radius = easygui.integerbox("Enter radius of explosion:", "Enter Radius", 64,0,None)
+    power = easygui.integerbox("Enter power of explosion:", "Enter Power", 10000,0,None)
+    isPhysics = easygui.boolbox("Make it rigid body?", "make rigid body")
+    baseTnt['params']['radius'] = radius
+    baseTnt['params']['id'] = ID
+    baseTnt['params']['impulse'] = power
+    baseTnt['params']['physic'] = isPhysics
+    data['layers'][2].append(baseTnt)
+    return data
